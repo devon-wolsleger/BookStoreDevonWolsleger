@@ -33,6 +33,8 @@ namespace BookStoreDevonWolsleger
             {
                 options.UseSqlite(Configuration["ConnectionStrings:BookDBConnection"]);
             });
+
+            services.AddScoped<IBookStoreRepository, EFBookStoreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
