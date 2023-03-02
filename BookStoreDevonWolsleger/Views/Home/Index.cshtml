@@ -10,11 +10,11 @@
             <h4>
                 @b.Title
                 <span class="badge badge-pill badge-primary" style="float:right">
-                    <small>@b.Price.ToString("c")</small>
+                    <small>Price: @b.Price.ToString("c")</small>
                 </span>
             </h4>
         </div>
-        <div class="card-text p-1">@b.Author</div>
+        <div class="card-text p-1">Author: @b.Author <br />Publisher: @b.Publisher<br />ISBN: @b.Isbn<br />Category: @b.Category<br />Classification: @b.Classification<br />Number of Pages: @b.PageCount<br /> </div>
     </div>
 }
 <div page-model="@Model.PageInfo" page-action="Index" page-classes-enabled="true"
