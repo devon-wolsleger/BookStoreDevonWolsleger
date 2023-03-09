@@ -1,0 +1,45 @@
+﻿@page
+@model BookStoreDevonWolsleger.Pages.AddModel
+@{
+}
+
+<h2>Your cart</h2>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var i in Model.basket.Items)
+            {
+                <tr>
+                    @* //Changed the name of the title to show up in bold that way the user can clearly see what they are buying *@
+                    <td class="fw-bold">@i.Book.Title</td>
+                    <td>@i.Quantity</td>
+                    <td>$@i.Book.Price</td>
+                    <td>@(i.Quantity * i.Book.Price)</td>
+
+                </tr>
+            }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3">Total:</td>
+            <td>@Model.basket.CalculateTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+
+</table>
+
+<div>
+    @* //Chnaged the button class to danger so that the button is red *@
+    <a class="btn btn-danger" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>
