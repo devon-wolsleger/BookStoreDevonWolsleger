@@ -16,6 +16,8 @@ namespace BookStoreDevonWolsleger.Models
 
         public IQueryable<Books> Bookss => context.Bookss.Include(x => x.Lines).ThenInclude(x => x.Book);
 
+        IQueryable<Books> IBooksRepository.Bookss { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public void SaveBooks(Books books)
         {
             context.AttachRange(books.Lines.Select(x => x.Book));
