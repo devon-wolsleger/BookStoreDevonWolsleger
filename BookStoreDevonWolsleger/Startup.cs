@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace BookStoreDevonWolsleger
 {
     public class Startup
@@ -35,11 +36,15 @@ namespace BookStoreDevonWolsleger
             });
 
             services.AddScoped<IBookStoreRepository, EFBookStoreRepository>();
+            services.AddScoped<IBooksRepository, EFBooksRepository>();
 
             services.AddRazorPages();
 
             services.AddDistributedMemoryCache();
             services.AddSession();
+
+            services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
